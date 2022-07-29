@@ -1,3 +1,5 @@
+<img src="images/axolpy-logo-transparent.svg" width="50%" />
+
 # axolpy-script, the Axolotl Library in Python
 #### Popularity
 <div align="left">
