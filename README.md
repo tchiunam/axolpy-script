@@ -1,6 +1,13 @@
 <img src="images/axolpy-logo-transparent.svg" width="50%" />
 
 # axolpy-script, the Axolotl Library in Python
+#### License
+<div align="left">
+  <a href="https://opensource.org/licenses/MIT">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/tchiunam/axolpy-lib" />
+  </a>
+</div>
+
 #### Popularity
 <div align="left">
   <a href="https://sourcegraph.com/github.com/tchiunam/axolpy-script?badge">
