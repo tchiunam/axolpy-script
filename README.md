@@ -1,10 +1,23 @@
 <img src="images/axolpy-logo-transparent.svg" width="50%" />
 
 # axolpy-script, the Axolotl Library in Python
+#### Activity
+<div align="left">
+  <a href="https://github.com/tchiunam/axolpy-script/commits/main">
+    <img alt="Last Commit" src="https://img.shields.io/github/last-commit/tchiunam/axolpy-script" />
+  </a>
+  <a href="https://github.com/tchiunam/axolpy-script/issues?q=is%3Aissue+is%3Aclosed">
+    <img alt="Closed Issues" src="https://img.shields.io/github/issues-closed/tchiunam/axolpy-script" />
+  </a>
+  <a href="https://github.com/tchiunam/axolpy-script/pulls?q=is%3Apr+is%3Aclosed">
+    <img alt="Closed Pull Requests" src="https://img.shields.io/github/issues-pr-closed/tchiunam/axolpy-script" />
+  </a>
+</div>
+
 #### License
 <div align="left">
   <a href="https://opensource.org/licenses/MIT">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/tchiunam/axolpy-lib" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/tchiunam/axolpy-script" />
   </a>
 </div>
 
