@@ -25,12 +25,10 @@ def init_arg_parser() -> argparse.ArgumentParser:
 arg_parser = init_arg_parser()
 args = arg_parser.parse_args()
 
-logger = logging.get_logger(name=os.path.basename(__file__))
-logging.set_level(logging.INFO)
-logging.show_milliseconds()
+logger = logging.get_logger(name=os.path.basename(__file__),
+                            level=logging.INFO)
 
 config = configuration.AxolpyConfigManager.get_context(name="blockchain")
-base_path = config["main"]["base_path"]
 
 private_key: str = args.private_key if args.private_key else getpass.getpass(
     prompt="Private Key: ")
