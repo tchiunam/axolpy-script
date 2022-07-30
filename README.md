@@ -1,6 +1,13 @@
 <img src="images/axolpy-logo-transparent.svg" width="50%" />
 
 # axolpy-script, the Axolotl Library in Python
+#### Code Quality
+<div align="left">
+  <a href="https://github.com/tchiunam/axolpy-script/actions/workflows/codeql-analysis.yml">
+    <img alt="CodeQL" src="https://github.com/tchiunam/axolpy-script/actions/workflows/codeql-analysis.yml/badge.svg" />
+  </a>
+</div>
+
 #### Activity
 <div align="left">
   <a href="https://github.com/tchiunam/axolpy-script/commits/main">
