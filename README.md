@@ -1,6 +1,20 @@
 <img src="images/axolpy-logo-transparent.svg" width="50%" />
 
 # axolpy-script, the Axolotl Library in Python
+#### Release
+<div align="left">
+  <a href="https://github.com/tchiunam/axolpy-script/releases">
+    <img alt="Version" src="https://img.shields.io/github/v/release/tchiunam/axolpy-script?sort=semver" />
+  </a>
+  <a href="https://github.com/tchiunam/axolpy-script/releases">
+    <img alt="Release Date" src="https://img.shields.io/github/release-date/tchiunam/axolpy-script" />
+  </a>
+  <img alt="Language" src="https://img.shields.io/github/languages/count/tchiunam/axolpy-script" />
+  <img alt="Lines of Code" src="https://img.shields.io/tokei/lines/github/tchiunam/axolpy-script" />
+  <img alt="File Count" src="https://img.shields.io/github/directory-file-count/tchiunam/axolpy-script" />
+  <img alt="Repository Size" src="https://img.shields.io/github/repo-size/tchiunam/axolpy-script.svg?label=Repo%20size" />
+</div>
+
 #### Code Quality
 <div align="left">
   <a href="https://github.com/tchiunam/axolpy-script/actions/workflows/python.yml">
