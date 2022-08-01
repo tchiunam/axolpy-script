@@ -17,11 +17,11 @@
 
 #### Code Quality
 <div align="left">
-  <a href="https://github.com/tchiunam/axolpy-script/actions/workflows/python.yml">
-    <img alt="Python" src="https://github.com/tchiunam/axolpy-script/actions/workflows/python.yml/badge.svg" />
+  <a href="https://github.com/tchiunam/axolpy-script/actions/workflows/python.yaml">
+    <img alt="Python" src="https://github.com/tchiunam/axolpy-script/actions/workflows/python.yaml/badge.svg" />
   </a>
-  <a href="https://github.com/tchiunam/axolpy-script/actions/workflows/codeql-analysis.yml">
-    <img alt="CodeQL" src="https://github.com/tchiunam/axolpy-script/actions/workflows/codeql-analysis.yml/badge.svg" />
+  <a href="https://github.com/tchiunam/axolpy-script/actions/workflows/codeql-analysis.yaml">
+    <img alt="CodeQL" src="https://github.com/tchiunam/axolpy-script/actions/workflows/codeql-analysis.yaml/badge.svg" />
   </a>
 </div>
 
