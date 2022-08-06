@@ -47,9 +47,6 @@
 
 #### Popularity
 <div align="left">
-  <a href="https://sourcegraph.com/github.com/tchiunam/axolpy-script?badge">
-    <img alt="Sourcegraph" src="https://sourcegraph.com/github.com/tchiunam/axolpy-script/-/badge.svg" />
-  </a>
   <img alt="Repo Stars" src="https://img.shields.io/github/stars/tchiunam/axolpy-script?style=social" />
   <img alt="Watchers" src="https://img.shields.io/github/watchers/tchiunam/axolpy-script?style=social" />
 </div>
