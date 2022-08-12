@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+# Web3
+Cython = ">=0.29.32"
+web3 = ">=5.30.0"
+
+# Blockchain
+py-solc-x = ">=1.1.1"
+
+# Axolotl
+axolpy-lib = ">=1.4.4"
+
+# IDE
+autopep8 = ">=1.6.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
