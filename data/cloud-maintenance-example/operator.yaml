@@ -1,21 +1,26 @@
-operator_1:
+operator1:
   ap-east-1:
     databases:
       - id: user
       - id: address
+      - id: favorite
+      - id: bookmark
     ecs:
       clusters:
         Production:
           services:
-          - name: "p-authentication-api"
+          - name: p-authentication-api
     eks:
       clusters:
         p-main:
           namespaces:
             p-general:
+              statefulsets:
+                - name: redis-sync-service
+                - name: psql-sync-service
               deployments:
                 - name: p-address-api
-operator_2:
+operator2:
   ap-east-1:
     databases:
       - id: audit_log
@@ -24,9 +29,9 @@ operator_2:
       clusters:
         Production:
           services:
-          - name: "p-address-api"
-          - name: "p-audit-log-api"
-          - name: "p-db-housekeeping-monthly"
+          - name: p-address-api
+          - name: p-audit-log-api
+          - name: p-db-housekeeping-monthly
     eks:
       clusters:
         p-main:
@@ -34,17 +39,18 @@ operator_2:
             p-general:
               deployments:
                 - name: p-audit-log-api
-operator_3:
+operator3:
   ap-east-1:
     eks:
       clusters:
         p-main:
           namespaces:
             p-general:
-              stateful_sets:
+              statefulsets:
                 - name: database-sync-service
               deployments:
                 - name: p-db-housekeeping-monthly
+                - name: p-aggregation-api
             p-authentication:
               deployments:
                 - name: p-authentication-api
