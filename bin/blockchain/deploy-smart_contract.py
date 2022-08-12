@@ -28,8 +28,8 @@ def init_arg_parser() -> argparse.ArgumentParser:
 arg_parser = init_arg_parser()
 args = arg_parser.parse_args()
 
-logger = logging.get_logger(name=os.path.basename(__file__),
-                            level=logging.INFO)
+logging.load_config()
+logger = logging.get_logger(name=os.path.basename(__file__))
 
 config = configuration.AxolpyConfigManager.get_context(name="blockchain")
 basepath = config["main"]["basepath"]
