@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "423d0edbbc66e51d7d054086334d0120dca199c44f83d8320afccb5014ae6ba6"
+            "sha256": "67fbb223001ebbe8e114d27a90a12e691b4342d01dce616e616a56ea6aac39db"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -128,11 +128,11 @@
         },
         "axolpy-lib": {
             "hashes": [
-                "sha256:1d62ad08be41357b99fe78cbd04735cd4f1b46000090a36a27596a91fd45550f",
-                "sha256:51ab5833b5fb539dcd54a392e31c58734bae1a351fa47549c769ce507cdfdbc5"
+                "sha256:0be71ab35fbbe7041cea7ba2c2e0b51996042d188677d45d4e68376fa985d9e6",
+                "sha256:ec61344fceed0f0728c50c722513e73abf15cdfbf34199493ed41ca9993fdbbf"
             ],
             "index": "pypi",
-            "version": "==1.4.7"
+            "version": "==1.4.8"
         },
         "base58": {
             "hashes": [

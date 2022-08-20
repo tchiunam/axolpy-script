@@ -15,7 +15,7 @@ py-solc-x = ">=1.1.1"
 cryptography = ">=37.0.4"
 
 # Axolotl
-axolpy-lib = ">=1.4.7"
+axolpy-lib = ">=1.4.8"
 
 # Others
 prompt_toolkit = ">=3.0.30"
