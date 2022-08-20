@@ -15,7 +15,10 @@ py-solc-x = ">=1.1.1"
 cryptography = ">=37.0.4"
 
 # Axolotl
-axolpy-lib = ">=1.4.6"
+axolpy-lib = ">=1.4.7"
+
+# Others
+prompt_toolkit = ">=3.0.30"
 
 # IDE
 autopep8 = ">=1.7.0"
