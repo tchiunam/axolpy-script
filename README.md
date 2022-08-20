@@ -57,13 +57,22 @@ scripts are written for the common use cases for the life of an engineer.
 You may configure **axolpy** through configuration file or command
 line parameters.
 
-## Use axolpy-script
+## Usage
+### Configure environment
 Configure the follow environment variables:
 ```
 AXOLPY_PATH=~/axolpy-script        # The path to axolpy-script directory
 ```
 
-Install dependencies:
+### Install dependencies
+#### Recommended way
+You are recommended to use [pyenv](https://github.com/pyenv/pyenv) and [pipenv](https://github.com/pypa/pipenv) to install the dependencies.
+```
+pipenv install
+```
+
+#### Alternative
+You can install dependencies with the old way by using requirements.txt.
 ```
 pip install -r requirements.txt
 ```
