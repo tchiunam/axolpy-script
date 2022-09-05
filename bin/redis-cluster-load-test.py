@@ -2,6 +2,7 @@ import time
 from random import random
 from typing import Any
 
+from axolpy import configuration
 from axolpy.util.helper.string import generate_random_string
 from locust import User, events, tag, task
 from rediscluster import RedisCluster
@@ -463,6 +464,9 @@ class RedisClient(object):
         return result
 
 
+config = configuration.AxolpyConfigManager.get_context(name="redis")
+
+
 class RedisUserStaticKey(User):
     """
     A user that uses static keys.
@@ -470,7 +474,10 @@ class RedisUserStaticKey(User):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._client = RedisClient()
+        self._client = RedisClient(
+            host=config["cluster-nodes"]["master.1.ip"],
+            port=config["cluster-nodes"]["master.1.port"]
+        )
 
     @ task
     @ tag("string")
@@ -512,7 +519,10 @@ class RedisUserRandomKey(User):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._client = RedisClient()
+        self._client = RedisClient(
+            host=config["cluster-nodes"]["master.2.ip"],
+            port=config["cluster-nodes"]["master.2.port"]
+        )
 
     @ task
     @ tag("string")
