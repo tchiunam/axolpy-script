@@ -77,6 +77,46 @@ You can install dependencies with the old way by using requirements.txt.
 pip install -r requirements.txt
 ```
 
+## Examples
+### Encrypt or decrypt message
+Run this to encrypt a message. Enter the key and message or provide them using `-k` for key file and `-m` for message.
+```console
+python bin/crypt-message.py
+```
+Similarly, run this to decrypt a message:
+```console
+python bin/crypt-message.py --decrypt
+```
+
+See the help for more details:
+```console
+python bin/crypt-message.py --help
+```
+You'll see output like this:
+```console
+usage: crypt-message.py [-h] [-g] [-k KEY_FILE] [-d] [-m MESSAGE]
+
+Encrypt or decrypt a message. The output is written to stdout.
+
+By default, encryption is executed. To decrypt, use the --decrypt.
+
+options:
+  -h, --help            show this help message and exit
+  -g, --generate-key-file
+                        Generate a key file. If this is specified, other arguments are ignored.
+  -k KEY_FILE, --key-file KEY_FILE
+                        The path to the key file.
+  -d, --decrypt         Decrypt a message.
+  -m MESSAGE, --message MESSAGE
+                        Message to encrypt or decrypt. If not specified, read from stdin.
+```
+
+### Redis cluster load test
+To run load test:
+```console
+locust -f bin/redis-cluster-load-test.py --headless -u 1000 -r 100 --run-time 5m --stop-timeout 5
+```
+
 ---
 #### See more  
 1. [axolpy-lib](https://github.com/tchiunam/axolpy-lib) for the base library
