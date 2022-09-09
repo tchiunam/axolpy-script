@@ -1,5 +1,5 @@
+import random
 import time
-from random import random
 from typing import Any
 
 from axolpy import configuration
