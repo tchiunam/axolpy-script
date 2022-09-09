@@ -12,16 +12,16 @@ web3 = ">=5.30.0"
 py-solc-x = ">=1.1.1"
 
 # Ecnryption
-cryptography = ">=37.0.4"
+cryptography = ">=38.0.1"
 
 # Redis
 redis-py-cluster = ">=2.1.3"
 
 # Axolotl
-axolpy-lib = ">=1.4.9"
+axolpy-lib = ">=1.4.10"
 
 # Testing
-locust = ">=2.11.1"
+locust = ">=2.12.0"
 
 # Others
 prompt_toolkit = ">=3.0.31"
