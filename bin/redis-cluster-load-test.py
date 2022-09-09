@@ -257,14 +257,13 @@ class RedisClient(object):
 
         request_type = "HSET"
         result: int = -1
-        elements = list()
+        elements = dict()
         for i in range(4):
-            elements.append(str(i))
-            elements.append(random_LDP(length=random.randint(5, 10)))
+            elements[str(i)] = random_LDP(length=random.randint(5, 10))
 
         start_time = time.time()
         try:
-            result = self.rc.hset(name, *elements)
+            result = self.rc.hset(name=name, mapping=elements)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
