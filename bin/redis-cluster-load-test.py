@@ -68,14 +68,16 @@ class RedisClient(object):
                                password=password,
                                decode_responses=True)
 
-    def set_string(self, name: str) -> str:
+    def set_string(self, event_name: str, key_name: str) -> str:
         """
         Set a string value to the redis server.
 
-        :param name: The name of the string.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the key.
+        :tye key_name: str
 
-        :return: The value of the string replied from redis server.
+        :return: The value of the string set.
         :rtype: str
         """
 
@@ -85,11 +87,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.set(name=name, value=value)
+            result = self.rc.set(name=key_name, value=value)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -100,7 +102,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -110,14 +112,16 @@ class RedisClient(object):
 
         return result
 
-    def get_string(self, name: str) -> str:
+    def get_string(self, event_name: str, key_name: str) -> str:
         """
         Get a string value from the redis server.
 
-        :param name: The name of the string.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the key.
+        :tye key_name: str
 
-        :return: The value of the string replied from redis server.
+        :return: The value of the string obtained.
         :rtype: str
         """
 
@@ -126,11 +130,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.get(name=name)
+            result = self.rc.get(name=key_name)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -141,7 +145,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -151,14 +155,16 @@ class RedisClient(object):
 
         return result
 
-    def push_list_elements(self, name: str) -> int:
+    def push_list_elements(self, event_name: str, key_name: str) -> int:
         """
         Push a list of elements to the redis server.
 
-        :param name: The name of the list.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the list.
+        :type key_name: str
 
-        :return: The length of the list replied from redis server.
+        :return: The number of elements pushed to the list.
         :rtype: int
         """
 
@@ -171,11 +177,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.lpush(name, *elements)
+            result = self.rc.lpush(key_name, *elements)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -186,7 +192,7 @@ class RedisClient(object):
             length = result.bit_length()
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -196,14 +202,16 @@ class RedisClient(object):
 
         return result
 
-    def add_set_members(self, name: str) -> int:
+    def add_set_members(self, event_name: str, key_name: str) -> int:
         """
         Add a set of members to the redis server.
 
-        :param name: The name of the set.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name:str
+        :param key_name: The name of the set.
+        :type key_name: str
 
-        :return: The number of members added to the set replied from redis server.
+        :return: The number of members added to the set.
         :rtype: int
         """
 
@@ -219,11 +227,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.sadd(name, *members)
+            result = self.rc.sadd(key_name, *members)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -234,7 +242,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -244,14 +252,16 @@ class RedisClient(object):
 
         return result
 
-    def set_hash_elements(self, name: str) -> int:
+    def set_hash_elements(self, event_name: str, key_name: str) -> int:
         """
         Set a hash of elements to the redis server.
 
-        :param name: The name of the hash.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the hash.
+        :type key_name: str
 
-        :return: The number of fields that were added to the hash replied from redis server.
+        :return: The number of elements set to the hash.
         :rtype: int
         """
 
@@ -263,11 +273,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.hset(name=name, mapping=elements)
+            result = self.rc.hset(name=key_name, mapping=elements)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -278,7 +288,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -288,14 +298,16 @@ class RedisClient(object):
 
         return result
 
-    def get_hash_element(self, name: str) -> Any | None:
+    def get_hash_element(self, event_name: str, key_name: str) -> Any | None:
         """
         Get an element of a hash from the redis server.
 
-        :param name: The name of the hash.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the hash.
+        :type key_name: str
 
-        :return: The hash of elements replied from redis server.
+        :return: The value of the element.
         :rtype: Any | None
         """
 
@@ -304,11 +316,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.hget(name=name, key=random.randint(0, 3))
+            result = self.rc.hget(name=key_name, key=random.randint(0, 3))
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -319,7 +331,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -329,14 +341,16 @@ class RedisClient(object):
 
         return result
 
-    def del_hash_element(self, name: str) -> int:
+    def del_hash_element(self, event_name: str, key_name: str) -> int:
         """
         Delete an element of a hash from the redis server.
 
-        :param name: The name of the hash.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the hash.
+        :type key_name: str
 
-        :return: The number of fields that were deleted from the hash replied from redis server.
+        :return: The number of elements deleted from the hash.
         :rtype: int
         """
 
@@ -345,11 +359,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.hdel(name, random.randint(0, 3))
+            result = self.rc.hdel(key_name, random.randint(0, 3))
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -360,7 +374,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -370,14 +384,16 @@ class RedisClient(object):
 
         return result
 
-    def add_sorted_set_member(self, name: str) -> int:
+    def add_sorted_set_member(self, event_name: str, key_name: str) -> int:
         """
         Add elements to a sorted set.
 
-        :param name: The name of the sorted set.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the sorted set.
+        :type key_name: str
 
-        :return: The number of elements added to the sorted set replied from redis server.
+        :return: The number of members added to the sorted set.
         :rtype: int
         """
 
@@ -388,11 +404,14 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.zadd(name=name, mapping={member: score}, nx=False)
+            result = self.rc.zadd(
+                name=key_name,
+                mapping={member: score}, nx=False
+            )
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -403,7 +422,7 @@ class RedisClient(object):
             length = result
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -415,20 +434,23 @@ class RedisClient(object):
 
     def get_sorted_set_range(
             self,
-            name: str,
+            event_name: str,
+            key_name: str,
             start: int = 0,
             end: int = -1) -> list:
         """
         Get a range of members from a sorted set.
 
-        :param name: The name of the sorted set.
-        :type name: str
+        :param event_name: The name of the event.
+        :type event_name: str
+        :param key_name: The name of the sorted set.
+        :type key_name: str
         :param start: The start index of the sorted set. Default is 0.
         :type start: int
         :param end: The end index of the sorted set. Default is -1.
         :type end: int
 
-        :return: The members of the sorted set replied from redis server.
+        :return: The members of the sorted set.
         :rtype: list
         """
 
@@ -437,11 +459,11 @@ class RedisClient(object):
 
         start_time = time.time()
         try:
-            result = self.rc.zrange(name=name, start=start, end=end)
+            result = self.rc.zrange(name=key_name, start=start, end=end)
         except Exception as e:
             events.request_failure.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -452,7 +474,7 @@ class RedisClient(object):
             length = len(str(result))
             events.request_success.fire(
                 request_type=request_type,
-                name=name,
+                name=event_name,
                 response_time=get_response_time_in_ms(
                     start_time=start_time,
                     end_time=time.time()
@@ -481,32 +503,38 @@ class RedisUserStaticKey(User):
     @ task
     @ tag("string")
     def string(self):
-        self._client.set_string(name="string_load_test")
-        self._client.get_string(name="string_load_test")
+        name = "string_lt_static"
+        self._client.set_string(event_name=name, key_name=name)
+        self._client.get_string(event_name=name, key_name=name)
 
     @ task
     @ tag("list")
     def list(self):
-        self._client.push_list_elements(name="list_load_test")
+        name = "list_lt_static"
+        self._client.push_list_elements(event_name=name, key_name=name)
 
     @ task
     @ tag("set")
     def set(self):
-        self._client.add_set_members(name="set_load_test")
+        name = "set_lt_static"
+        self._client.add_set_members(event_name=name, key_name=name)
 
     @ task
     @ tag("hash")
     def hash(self):
-        self._client.set_hash_elements(name="hash_load_test")
-        self._client.get_hash_element(name="hash_load_test")
-        self._client.del_hash_element(name="hash_load_test")
+        name = "hash_lt_static"
+        self._client.set_hash_elements(event_name=name, key_name=name)
+        self._client.get_hash_element(event_name=name, key_name=name)
+        self._client.del_hash_element(event_name=name, key_name=name)
 
     @ task
     @ tag("sorted-set")
     def sorted_set(self):
-        self._client.add_sorted_set_member(name="sorted_set_add_load_test")
+        name = "sorted_set_lt_static"
+        self._client.add_sorted_set_member(event_name=name, key_name=name)
         self._client.get_sorted_set_range(
-            name="sorted_set_range_load_test",
+            event_name=name,
+            key_name=name,
             end=100
         )
 
@@ -526,31 +554,50 @@ class RedisUserRandomKey(User):
     @ task
     @ tag("string")
     def string(self):
-        name = random_LDP()
-        self._client.set_string(name=name)
-        self._client.get_string(name=name)
+        event_name = "string_lt_dynamic"
+        key_name = random_LDP()
+        self._client.set_string(event_name=event_name, key_name=key_name)
+        self._client.get_string(event_name=event_name, key_name=key_name)
 
     @ task
     @ tag("list")
     def list(self):
-        self._client.push_list_elements(name=random_LDP())
+        event_name = "list_lt_dynamic"
+        key_name = random_LDP()
+        self._client.push_list_elements(
+            event_name=event_name,
+            key_name=key_name
+        )
 
     @ task
     @ tag("set")
     def set(self):
-        self._client.add_set_members(name=random_LDP())
+        event_name = "set_lt_dynamic"
+        key_name = random_LDP()
+        self._client.add_set_members(event_name=event_name, key_name=key_name)
 
     @ task
     @ tag("hash")
     def hash(self):
-        name = random_LDP()
-        self._client.set_hash_elements(name=name)
-        self._client.get_hash_element(name=name)
-        self._client.del_hash_element(name=name)
+        event_name = "hash_lt_dynamic"
+        key_name = random_LDP()
+        self._client.set_hash_elements(
+            event_name=event_name,
+            key_name=key_name
+        )
+        self._client.get_hash_element(event_name=event_name, key_name=key_name)
+        self._client.del_hash_element(event_name=event_name, key_name=key_name)
 
     @ task
     @ tag("sorted-set")
     def sorted_set(self):
-        name = random_LDP()
-        self._client.add_sorted_set_member(name=name)
-        self._client.get_sorted_set_range(name=name)
+        event_name = "sorted_set_lt_dynamic"
+        key_name = random_LDP()
+        self._client.add_sorted_set_member(
+            event_name=event_name,
+            key_name=key_name
+        )
+        self._client.get_sorted_set_range(
+            event_name=event_name,
+            key_name=key_name
+        )
