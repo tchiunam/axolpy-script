@@ -401,7 +401,7 @@ class RedisClient(object):
                 exception=e
             )
         else:
-            length = len(result.encode())
+            length = result
             events.request_success.fire(
                 request_type=request_type,
                 name=name,
