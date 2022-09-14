@@ -500,35 +500,35 @@ class RedisUserStaticKey(User):
             port=config["cluster-nodes"]["master.1.port"]
         )
 
-    @ task
-    @ tag("string")
+    @task
+    @tag("string")
     def string(self):
         name = "string_lt_static"
         self._client.set_string(event_name=name, key_name=name)
         self._client.get_string(event_name=name, key_name=name)
 
-    @ task
-    @ tag("list")
+    @task
+    @tag("list")
     def list(self):
         name = "list_lt_static"
         self._client.push_list_elements(event_name=name, key_name=name)
 
-    @ task
-    @ tag("set")
+    @task
+    @tag("set")
     def set(self):
         name = "set_lt_static"
         self._client.add_set_members(event_name=name, key_name=name)
 
-    @ task
-    @ tag("hash")
+    @task
+    @tag("hash")
     def hash(self):
         name = "hash_lt_static"
         self._client.set_hash_elements(event_name=name, key_name=name)
         self._client.get_hash_element(event_name=name, key_name=name)
         self._client.del_hash_element(event_name=name, key_name=name)
 
-    @ task
-    @ tag("sorted-set")
+    @task
+    @tag("sorted-set")
     def sorted_set(self):
         name = "sorted_set_lt_static"
         self._client.add_sorted_set_member(event_name=name, key_name=name)
@@ -551,16 +551,16 @@ class RedisUserRandomKey(User):
             port=config["cluster-nodes"]["master.2.port"]
         )
 
-    @ task
-    @ tag("string")
+    @task
+    @tag("string")
     def string(self):
         event_name = "string_lt_dynamic"
         key_name = random_LDP()
         self._client.set_string(event_name=event_name, key_name=key_name)
         self._client.get_string(event_name=event_name, key_name=key_name)
 
-    @ task
-    @ tag("list")
+    @task
+    @tag("list")
     def list(self):
         event_name = "list_lt_dynamic"
         key_name = random_LDP()
@@ -569,15 +569,15 @@ class RedisUserRandomKey(User):
             key_name=key_name
         )
 
-    @ task
-    @ tag("set")
+    @task
+    @tag("set")
     def set(self):
         event_name = "set_lt_dynamic"
         key_name = random_LDP()
         self._client.add_set_members(event_name=event_name, key_name=key_name)
 
-    @ task
-    @ tag("hash")
+    @task
+    @tag("hash")
     def hash(self):
         event_name = "hash_lt_dynamic"
         key_name = random_LDP()
@@ -588,8 +588,8 @@ class RedisUserRandomKey(User):
         self._client.get_hash_element(event_name=event_name, key_name=key_name)
         self._client.del_hash_element(event_name=event_name, key_name=key_name)
 
-    @ task
-    @ tag("sorted-set")
+    @task
+    @tag("sorted-set")
     def sorted_set(self):
         event_name = "sorted_set_lt_dynamic"
         key_name = random_LDP()
