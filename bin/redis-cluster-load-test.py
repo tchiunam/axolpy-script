@@ -549,7 +549,7 @@ class RedisUserRandomKey(User):
         super().__init__(*args, **kwargs)
         rc_args = {"host": config["cluster-nodes"]["master.2.ip"],
                    "port": config["cluster-nodes"]["master.2.port"]}
-        if "master.1.auth" in config["cluster-nodes"]:
+        if "master.2.auth" in config["cluster-nodes"]:
             rc_args["password"] = config["cluster-nodes"]["master.2.auth"]
         self._client = RedisClient(rc_args)
 
