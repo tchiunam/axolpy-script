@@ -495,10 +495,11 @@ class RedisUserStaticKey(User):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._client = RedisClient(
-            host=config["cluster-nodes"]["master.1.ip"],
-            port=config["cluster-nodes"]["master.1.port"]
-        )
+        rc_args = {"host": config["cluster-nodes"]["master.1.ip"],
+                   "port": config["cluster-nodes"]["master.1.port"]}
+        if "master.1.auth" in config["cluster-nodes"]:
+            rc_args["password"] = config["cluster-nodes"]["master.1.auth"]
+        self._client = RedisClient(rc_args)
 
     @task
     @tag("string")
@@ -546,10 +547,11 @@ class RedisUserRandomKey(User):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self._client = RedisClient(
-            host=config["cluster-nodes"]["master.2.ip"],
-            port=config["cluster-nodes"]["master.2.port"]
-        )
+        rc_args = {"host": config["cluster-nodes"]["master.2.ip"],
+                   "port": config["cluster-nodes"]["master.2.port"]}
+        if "master.1.auth" in config["cluster-nodes"]:
+            rc_args["password"] = config["cluster-nodes"]["master.2.auth"]
+        self._client = RedisClient(rc_args)
 
     @task
     @tag("string")
