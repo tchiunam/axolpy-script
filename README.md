@@ -52,6 +52,7 @@
 </div>
 
 <br />
+
 This is the script repository of the Axolotl series in Python. These
 scripts are written for the common use cases for the life of an engineer.
 You may configure **axolpy** through configuration file or command
@@ -60,20 +61,22 @@ line parameters.
 ## Usage
 ### Configure environment
 Configure the follow environment variables:
-```
+```console
 AXOLPY_PATH=~/axolpy-script        # The path to axolpy-script directory
 ```
+If `AXOLPY_PATH` is not set, `~/axolpy` will be used.
 
 ### Install dependencies
 #### Recommended way
-You are recommended to use [pyenv](https://github.com/pyenv/pyenv) and [pipenv](https://github.com/pypa/pipenv) to install the dependencies.
-```
+You are recommended to use [pyenv](https://github.com/pyenv/pyenv) and [pipenv](https://github.com/pypa/pipenv)
+to install the dependencies. To install all dependencies:
+```console
 pipenv install
 ```
 
 #### Alternative
 You can install dependencies with the old way by using requirements.txt.
-```
+```console
 pip install -r requirements.txt
 ```
 
